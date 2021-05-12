@@ -1,0 +1,15 @@
+type TestEntity {
+    id: ID!,
+    createDate: String,
+    editDate: String,
+    content: String,
+}
+
+type Query {
+    testEntities(count: Int): [TestEntity]
+    testEntity(id: ID): TestEntity
+}
+
+type Mutation {
+    createTestEntity(content: String!): TestEntity
+}

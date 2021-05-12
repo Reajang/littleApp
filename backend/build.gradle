@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     implementation project(':frontend')
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 //    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -28,6 +28,28 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //    testImplementation 'org.springframework.security:spring-security-test'
+
+    implementation 'org.liquibase:liquibase-core'
+    implementation 'org.postgresql:postgresql:42.2.10'
+
+    implementation 'com.graphql-java:graphql-java:11.0'
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
+    implementation 'com.google.guava:guava:26.0-jre'
+
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+    compileOnly("org.hibernate:hibernate-jpamodelgen:5.4.10.Final") {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+    testCompileOnly("org.hibernate:hibernate-jpamodelgen:5.4.10.Final") {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+    annotationProcessor("org.hibernate:hibernate-jpamodelgen:5.4.10.Final") {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+
+    implementation 'org.apache.commons:commons-lang3:3.10'
 }
 
 test {
