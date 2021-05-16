@@ -6,10 +6,10 @@ type TestEntity {
 }
 
 type Query {
-    testEntities(count: Int): [TestEntity]
+#    testEntities(page: Int, size: Int): [TestEntity]
     testEntity(id: ID): TestEntity
 }
 
-type Mutation {
-    createTestEntity(content: String!): TestEntity
-}
+#type Mutation {
+#    createTestEntity(content: String!): TestEntity
+#}

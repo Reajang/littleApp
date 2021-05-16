@@ -1,5 +1,6 @@
 package com.example.backend.configuration;
 
+import com.example.backend.testentity.GraphQLDataFetchers;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
@@ -21,14 +22,17 @@ import java.nio.charset.StandardCharsets;
 
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
-//@Configuration
-@AllArgsConstructor
+@Configuration
 public class GraphQLConfiguration {
 
     @Value("classpath:graphql/schema.graphqls")
-    private final Resource graphqlSchema;
+    private Resource graphqlSchema;
 
-//    private final GraphQLDataFetchers graphQLDataFetchers;
+    public GraphQLConfiguration(GraphQLDataFetchers graphQLDataFetchers) {
+        this.graphQLDataFetchers = graphQLDataFetchers;
+    }
+
+    private final GraphQLDataFetchers graphQLDataFetchers;
 
     @Bean
     public GraphQL graphQL() {
@@ -50,12 +54,14 @@ public class GraphQLConfiguration {
     }
 
     private RuntimeWiring buildWiring() {
-        return null;
-//        return RuntimeWiring.newRuntimeWiring()
-//                .type(newTypeWiring("Query")
-//                        .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher()))
+        return RuntimeWiring.newRuntimeWiring()
+                .type(newTypeWiring("Query")
+                        .dataFetcher("testEntity", graphQLDataFetchers.getTestEntityById())
+//                        .dataFetcher("testEntities", graphQLDataFetchers.getTestEntitiesPage())
+
+                )
 //                .type(newTypeWiring("Book")
 //                        .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher()))
-//                .build();
+                .build();
     }
 }
