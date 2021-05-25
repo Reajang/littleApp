@@ -1,0 +1,23 @@
+@import "./src/scss/variables";
+
+
+.home-page {
+
+}
+
+.first-button {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: antiquewhite;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include text-16();
+
+  &:hover {
+    border: solid 1px aqua;
+    cursor: pointer;
+  }
+}

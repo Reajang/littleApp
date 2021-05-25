@@ -1,0 +1,15 @@
+@import "./src/scss/variables";
+
+.header-wrapper {
+  width: 100%;
+  height: 50px;
+  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  margin: auto;
+  @include text-16();
+}
+
